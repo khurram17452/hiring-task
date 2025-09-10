@@ -9,7 +9,7 @@ It includes database integration, validations, and automatically generated API d
 Quickly setup and run the app if you are a pro.
 
 ```bash
-git clone https://github.com/your-username/hiring-task.git
+git clone git@github.com:khurram17452/hiring-task.git
 cd hiring-task
 echo "DATABASE_URL=postgresql+psycopg2://postgres:postgres@db:5432/fastapi_db" > .env
 docker compose build
@@ -65,7 +65,7 @@ Build and start everything (API + Database):
 **1. Clone the repository**  
 
 ```bash
-git clone https://github.com/your-username/hiring-task.git
+git clone git@github.com:khurram17452/hiring-task.git
 cd hiring-task
 ```
 **2. Build the Image**

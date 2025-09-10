@@ -1,0 +1,58 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.venv/
+my-env/
+
+# Python cache and logs
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.hypothesis/
+*.pytest_cache/
+*.mo
+
+# Environments
+.env
+.env.* 
+*.env
+
+# Database
+*.db
+*.sqlite3
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*~
+
+# Docker
+*.pid
+*.seed
+*.pid.lock
+docker-compose.override.yml
+
+# OS generated files
+.DS_Store
+Thumbs.db

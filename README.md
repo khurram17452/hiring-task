@@ -11,11 +11,12 @@ Quickly setup and run the app if you are a pro.
 ```bash
 git clone git@github.com:khurram17452/hiring-task.git
 cd hiring-task
-echo "DATABASE_URL=postgresql+psycopg2://postgres:postgres@db:5432/fastapi_db" > .env
+echo .env
 docker compose build
 docker compose up -d
 ```
 
+---
 
 ## 📂 Project Structure  
 
@@ -43,6 +44,7 @@ hiring-task/
 Make sure you have installed:  
 - [Docker](https://www.docker.com/)  
 - Python 3.10+ (only if you want to run without Docker)  
+- Dependencies listed in `requirements.txt` if running locally  
 
 ---
 
@@ -51,7 +53,15 @@ Make sure you have installed:
 Create a `.env` file in the root:  
 
 ```ini
-DATABASE_URL=postgresql+psycopg2://postgres:postgres@db:5432/fastapi_db
+# .env
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+POSTGRES_DB=fastapi_db
+POSTGRES_PORT=5432
+POSTGRES_HOST=db
+
+# For FastAPI connection
+DATABASE_URL=postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
 
 ```
 
@@ -61,19 +71,19 @@ DATABASE_URL=postgresql+psycopg2://postgres:postgres@db:5432/fastapi_db
 
 Build and start everything (API + Database):  
 
-
 **1. Clone the repository**  
 
 ```bash
 git clone git@github.com:khurram17452/hiring-task.git
 cd hiring-task
 ```
-**2. Build the Image**
+
+**2. Build the Image**  
 ```bash
 docker compose build
 ```
 
-**3. Run the Container**
+**3. Run the Container**  
 ```bash
 docker compose up -d
 ```
@@ -83,7 +93,7 @@ The app will now be available at:
 
 ---
 
-### 4. 📖 API Documentation  
+## 📖 API Documentation  
 
 FastAPI provides auto-generated docs:  
 
@@ -92,7 +102,7 @@ FastAPI provides auto-generated docs:
 
 ---
 
-### 5. 🐘 Database Access  
+## 🐘 Database Access  
 
 From your host machine:  
 
@@ -104,13 +114,13 @@ Password: `postgres`
 
 ---
 
-### 6. 📜 Example Endpoints  
+## 📜 Example Endpoints  
 
-- `POST /items/` → Create an item  
-- `GET /items/` → List all items  
-- `GET /items/{id}` → Get item by ID  
-- `PUT /items/{id}` → Update item  
-- `DELETE /items/{id}` → Delete item  
+- `POST /users/` → Create a user  
+- `GET /users/` → List all users  
+- `GET /users/{id}` → Get user by ID  
+- `PUT /users/{id}` → Update user  
+- `DELETE /users/{id}` → Delete user  
 
 ---
 
@@ -127,7 +137,30 @@ Make sure Postgres is running locally and update `.env` accordingly.
 
 ---
 
-## 🏆 Notes  
+## 🧪 How to Test the API  
+
+- **Browser** → Open [http://localhost:8000/docs](http://localhost:8000/docs) and try endpoints interactively.  
+- **curl** →  
+  ```bash
+  curl -X POST http://localhost:8000/users/ -H "Content-Type: application/json" -d '{"name":"Alice","email":"alice@example.com"}'
+  curl http://localhost:8000/users/
+  ```
+- **Postman** → Import `http://localhost:8000/docs` as a collection.  
+
+---
+
+## 🏆 Why This Stack / Approach  
+
+- **FastAPI** → Modern, high-performance web framework with automatic OpenAPI docs.  
+- **PostgreSQL** → Reliable, production-grade database with strong support for relational data.  
+- **SQLAlchemy ORM** → Clean database access layer with models that map directly to Python classes.  
+- **Pydantic v2** → Ensures request/response validation and type safety.  
+- **Docker Compose** → One command to start both the API and DB, ensuring consistent environment setup.  
+- **Modular Project Structure** → Separation of concerns (API, CRUD, schemas, DB) for maintainability and clarity.  
+
+---
+
+## 🏅 Notes  
 
 - Built with **FastAPI**, **SQLAlchemy**, and **Pydantic v2**  
 - Uses **Docker Compose** for one-command startup  
